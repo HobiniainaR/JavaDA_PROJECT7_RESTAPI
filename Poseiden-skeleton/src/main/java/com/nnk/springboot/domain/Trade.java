@@ -34,19 +34,14 @@ public class Trade {
     @Digits(integer = 10, fraction = 2)
     private Double buyQuantity;
 
-    @NotNull
     @Digits(integer = 10, fraction = 2)
     private Double sellQuantity;
 
-    @NotNull
     @Digits(integer = 10, fraction = 2)
     private Double buyPrice;
 
-    @NotNull
     @Digits(integer = 10, fraction = 2)
     private Double sellPrice;
-
-    private String benchmark;
 
     private Timestamp tradeDate;
 
@@ -55,6 +50,8 @@ public class Trade {
     private String status;
 
     private String trader;
+
+    private String benchmark;
 
     private String book;
 
