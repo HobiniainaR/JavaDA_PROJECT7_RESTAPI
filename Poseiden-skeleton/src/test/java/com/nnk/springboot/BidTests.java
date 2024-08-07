@@ -2,45 +2,54 @@ package com.nnk.springboot;
 
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class BidTests {
-
+	BidList bid;
 	@Autowired
 	private BidListRepository bidListRepository;
 
 	@Test
 	public void bidListTest() {
-		BidList bid = new BidList("Account Test", "Type Test", 10d);
 
-		// Save
+		bid = new BidList();
+		bid.setBidListId(1);
+		bid.setCreationDate(new Timestamp(new Date().getTime()));
+		bid.setBidQuantity(1.0);
+		bid.setAskQuantity(1.0);
+		bid.setBid(1.0);
+		bid.setAccount("Account Test");
+		bid.setType("Type Test");
+
+
 		bid = bidListRepository.save(bid);
-		Assert.assertNotNull(bid.getBidListId());
-		Assert.assertEquals(bid.getBidQuantity(), 10d, 10d);
+		Assertions.assertNotNull(bid.getBidListId(), "BidList ID should not be null after save");
+		Assertions.assertEquals(10d, bid.getBidQuantity(), 0.001, "Bid Quantity should be 10d");
 
-		// Update
+
 		bid.setBidQuantity(20d);
 		bid = bidListRepository.save(bid);
-		Assert.assertEquals(bid.getBidQuantity(), 20d, 20d);
+		Assertions.assertEquals(20d, bid.getBidQuantity(), 0.001, "Bid Quantity should be updated to 20d");
 
-		// Find
+
 		List<BidList> listResult = bidListRepository.findAll();
-		Assert.assertTrue(listResult.size() > 0);
+		Assertions.assertTrue(listResult.size() > 0, "BidList should not be empty");
 
-		// Delete
+
 		Integer id = bid.getBidListId();
 		bidListRepository.delete(bid);
 		Optional<BidList> bidList = bidListRepository.findById(id);
-		Assert.assertFalse(bidList.isPresent());
+		Assertions.assertFalse(bidList.isPresent(), "BidList should be deleted");
 	}
 }

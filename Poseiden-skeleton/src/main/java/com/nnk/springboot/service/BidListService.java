@@ -4,13 +4,15 @@ import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional
 @Service
 public class BidListService {
     @Autowired
-    BidListRepository bidListRepository;
+    private BidListRepository bidListRepository;
 
     public List<BidList> findAll() {
         return bidListRepository.findAll();
@@ -22,6 +24,7 @@ public class BidListService {
         return bidListRepository.findById(id).orElse(null);
     }
     public void deleteById(Integer id){
+
         bidListRepository.deleteById(id);
     }
 
