@@ -19,10 +19,9 @@ public class CurveController {
     @Autowired
     private CurvePointService curvePointService;
     @RequestMapping("/curvePoint/list")
-    public String home(Model model, Principal principal)
+    public String home(Model model)
     {
         model.addAttribute("curvePointList", curvePointService.findAll());
-        model.addAttribute("userName", (principal != null) ? principal.getName() : "Guest");
         return "curvePoint/list";
     }
 
