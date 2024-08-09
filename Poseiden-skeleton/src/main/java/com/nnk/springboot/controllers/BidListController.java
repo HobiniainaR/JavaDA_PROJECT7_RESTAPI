@@ -56,7 +56,7 @@ public class BidListController {
         }
         bidList.setBidListId(id);
         bidListService.save(bidList);
-        return "redirect:/bidList/list";
+            return "redirect:/bidList/list";
     }
 
     @GetMapping("/delete/{id}")

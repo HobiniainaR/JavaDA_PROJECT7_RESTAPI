@@ -25,21 +25,21 @@ public class CurvePointTests {
 		curvePoint.setTerm(55.05);
 		curvePoint.setCurveId(10);
 
-
+        // Save
 		curvePoint = curvePointRepository.save(curvePoint);
 		Assertions.assertNotNull(curvePoint.getId(), "CurvePoint ID should not be null after save");
 		Assertions.assertEquals(10, curvePoint.getCurveId(), "Curve ID should be 10");
 
-
+        //Update
 		curvePoint.setCurveId(20);
 		curvePoint = curvePointRepository.save(curvePoint);
 		Assertions.assertEquals(20, curvePoint.getCurveId(), "Curve ID should be updated to 20");
 
-
+        //Find
 		List<CurvePoint> listResult = curvePointRepository.findAll();
 		Assertions.assertTrue(listResult.size() > 0, "CurvePoint list should not be empty");
 
-
+        // Delete
 		Integer id = curvePoint.getId();
 		curvePointRepository.delete(curvePoint);
 		Optional<CurvePoint> curvePointList = curvePointRepository.findById(id);

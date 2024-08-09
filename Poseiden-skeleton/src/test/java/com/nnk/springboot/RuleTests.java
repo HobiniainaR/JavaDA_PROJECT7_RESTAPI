@@ -21,17 +21,25 @@ public class RuleTests {
 
 	@Test
 	public void ruleTest() {
-		RuleName rule = new RuleName("Rule Name", "Description", "Json", "Template", "SQL", "SQL Part");
+		RuleName rule = new RuleName();
+		rule.setName("rule");
+		rule.setDescription("description");
+		rule.setJson("json");
+		rule.setTemplate("template");
+		rule.setSqlStr("str");
+		rule.setSqlPart("part");
+		ruleNameRepository.save(rule);
+
 
 		// Save
 		rule = ruleNameRepository.save(rule);
 		Assert.assertNotNull(rule.getId());
-		Assert.assertTrue(rule.getName().equals("Rule Name"));
+        Assert.assertEquals("rule", rule.getName());
 
 		// Update
 		rule.setName("Rule Name Update");
 		rule = ruleNameRepository.save(rule);
-		Assert.assertTrue(rule.getName().equals("Rule Name Update"));
+        Assert.assertEquals("Rule Name Update", rule.getName());
 
 		// Find
 		List<RuleName> listResult = ruleNameRepository.findAll();
