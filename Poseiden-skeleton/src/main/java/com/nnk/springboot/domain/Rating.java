@@ -22,15 +22,18 @@ public class Rating {
     private Integer id;
 
     @NotBlank(message = "Moody's Rating is mandatory")
+    @Column(name = "moodys_rating")
     private String moodysRating;
 
     @NotBlank(message = "S&P Rating is mandatory")
+    @Column(name = "sand_p_rating")
     private String sandPRating;
 
     @NotBlank(message = "Fitch Rating is mandatory")
+    @Column(name = "fitch_rating")
     private String fitchRating;
 
-    @NotNull
+    @NotNull(message = "Order is mandatory")
     @Column(name = "order_number")
     private Integer orderNumber;
 }

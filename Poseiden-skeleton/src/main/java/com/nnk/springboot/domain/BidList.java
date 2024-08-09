@@ -26,20 +26,20 @@ public class BidList {
     @NotBlank(message = "Type is mandatory")
     private String type;
 
-    @NotNull
-    @Digits(integer = 10, fraction = 2)
+    @NotNull(message = "Bid Quantity is mandatory")
+    @Digits(integer = 10, fraction = 2, message = "Bid Quantity must be a number with up to 2 decimal places")
     private Double bidQuantity;
 
-    @NotNull
-    @Digits(integer = 10, fraction = 2)
+    @NotNull(message = "Ask Quantity is mandatory")
+    @Digits(integer = 10, fraction = 2, message = "Ask Quantity must be a number with up to 2 decimal places")
     private Double askQuantity;
 
-    @NotNull
-    @Digits(integer = 10, fraction = 2)
+    @NotNull(message = "Bid is mandatory")
+    @Digits(integer = 10, fraction = 2, message = "Bid must be a number with up to 2 decimal places")
     private Double bid;
 
-    @NotNull
-    @Digits(integer = 10, fraction = 2)
+    @NotNull(message = "Ask is mandatory")
+    @Digits(integer = 10, fraction = 2, message = "Ask must be a number with up to 2 decimal places")
     private Double ask;
 
     private String benchmark;

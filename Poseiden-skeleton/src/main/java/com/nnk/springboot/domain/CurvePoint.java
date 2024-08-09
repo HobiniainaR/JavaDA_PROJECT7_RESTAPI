@@ -1,13 +1,8 @@
 package com.nnk.springboot.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import java.sql.Timestamp;
@@ -22,19 +17,15 @@ public class CurvePoint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
-    @Column(name = "curve_id")
-    private Integer curveId;
-
     @Column(name = "as_of_date")
     private Timestamp asOfDate;
 
-    @NotNull
-    @Digits(integer = 10, fraction = 2)
+    @NotNull(message = "Term is mandatory")
+    @Digits(integer = 10, fraction = 2, message = "Term must be a number with up to 2 decimal places")
     private Double term;
 
-    @NotNull
-    @Digits(integer = 10, fraction = 2)
+    @NotNull(message = "Value is mandatory")
+    @Digits(integer = 10, fraction = 2, message = "Value must be a number with up to 2 decimal places")
     private Double value;
 
     @Column(name = "creation_date")

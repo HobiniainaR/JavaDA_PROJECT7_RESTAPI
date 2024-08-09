@@ -6,13 +6,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Digits;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.sql.Timestamp;
 
 @Entity
 @Table(name = "trade")
@@ -22,53 +17,16 @@ public class Trade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "trade_id")
     private Integer tradeId;
 
-    @NotBlank(message = "Account is mandatory")
+    @Column(name = "account")
     private String account;
 
-    @NotBlank(message = "Type is mandatory")
+    @Column(name = "type")
     private String type;
 
-    @NotNull
-    @Digits(integer = 10, fraction = 2)
+    @Column(name = "buy_quantity")
     private Double buyQuantity;
 
-    @Digits(integer = 10, fraction = 2)
-    private Double sellQuantity;
 
-    @Digits(integer = 10, fraction = 2)
-    private Double buyPrice;
-
-    @Digits(integer = 10, fraction = 2)
-    private Double sellPrice;
-
-    private Timestamp tradeDate;
-
-    private String security;
-
-    private String status;
-
-    private String trader;
-
-    private String benchmark;
-
-    private String book;
-
-    private String creationName;
-
-    private Timestamp creationDate;
-
-    private String revisionName;
-
-    private Timestamp revisionDate;
-
-    private String dealName;
-
-    private String dealType;
-
-    private String sourceListId;
-
-    private String side;
 }
