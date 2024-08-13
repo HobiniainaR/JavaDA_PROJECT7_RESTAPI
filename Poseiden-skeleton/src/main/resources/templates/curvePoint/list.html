@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8"/>
-	<title>Curve Point List</title>
+	<title>Home</title>
 	<link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 <body>
@@ -31,6 +31,7 @@
 			<thead>
 			<tr>
 				<th>Id</th>
+				<th>CurvePointId</th>
 				<th>Term</th>
 				<th>Value</th>
 				<th>Action</th>
@@ -38,10 +39,11 @@
 			</thead>
 			<tbody>
 			<tr th:each="curvePoint : ${curvePointList}">
+				<td style="width: 10%" th:text="${curvePoint.id}"></td>
 				<td th:text="${curvePoint.id}"></td>
 				<td th:text="${curvePoint.term}"></td>
 				<td th:text="${curvePoint.value}"></td>
-				<td class="text-center">
+				<td style="width: 15%" class="text-center">
 					<a th:href="@{/curvePoint/update/{id}(id=${curvePoint.id})}" class="btn btn-primary btn-sm">Edit</a>&nbsp;|&nbsp;
 					<a th:href="@{/curvePoint/delete/{id}(id=${curvePoint.id})}" class="btn btn-warning btn-sm">Delete</a>
 				</td>

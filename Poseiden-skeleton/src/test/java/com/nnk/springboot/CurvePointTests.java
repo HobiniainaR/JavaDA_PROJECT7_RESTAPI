@@ -30,12 +30,12 @@ public class CurvePointTests {
 		Assertions.assertNotNull(curvePoint.getId(), "CurvePoint ID should not be null after save");
 		Assertions.assertEquals(10, curvePoint.getCurveId(), "Curve ID should be 10");
 
-        //Update
+        // Update
 		curvePoint.setCurveId(20);
 		curvePoint = curvePointRepository.save(curvePoint);
 		Assertions.assertEquals(20, curvePoint.getCurveId(), "Curve ID should be updated to 20");
 
-        //Find
+        // Find
 		List<CurvePoint> listResult = curvePointRepository.findAll();
 		Assertions.assertTrue(listResult.size() > 0, "CurvePoint list should not be empty");
 
