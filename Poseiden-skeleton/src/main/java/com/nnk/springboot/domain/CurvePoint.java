@@ -30,11 +30,9 @@ public class CurvePoint {
     private Timestamp asOfDate;
 
     @NotNull
-    @Digits(integer = 10, fraction = 2)
     private Double term;
 
     @NotNull
-    @Digits(integer = 10, fraction = 2)
     private Double value;
 
     @Column(name = "creation_date")

@@ -1,7 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Digits;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -20,6 +20,7 @@ public class BidList {
     @Column(name = "bid_list_id")
     private Integer bidListId;
 
+    @NotNull
     @NotBlank(message = "Account is mandatory")
     private String account;
 
@@ -27,19 +28,17 @@ public class BidList {
     private String type;
 
     @NotNull(message = "Bid Quantity is mandatory")
-    @Digits(integer = 10, fraction = 2, message = "Bid Quantity must be a number with up to 2 decimal places")
     private Double bidQuantity;
 
     @NotNull(message = "Ask Quantity is mandatory")
-    @Digits(integer = 10, fraction = 2, message = "Ask Quantity must be a number with up to 2 decimal places")
     private Double askQuantity;
 
     @NotNull(message = "Bid is mandatory")
-    @Digits(integer = 10, fraction = 2, message = "Bid must be a number with up to 2 decimal places")
+
     private Double bid;
 
     @NotNull(message = "Ask is mandatory")
-    @Digits(integer = 10, fraction = 2, message = "Ask must be a number with up to 2 decimal places")
+
     private Double ask;
 
     private String benchmark;
