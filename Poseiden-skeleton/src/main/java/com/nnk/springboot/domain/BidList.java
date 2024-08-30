@@ -20,7 +20,6 @@ public class BidList {
     @Column(name = "bid_list_id")
     private Integer bidListId;
 
-    @NotNull
     @NotBlank(message = "Account is mandatory")
     private String account;
 
@@ -34,11 +33,9 @@ public class BidList {
     private Double askQuantity;
 
     @NotNull(message = "Bid is mandatory")
-
     private Double bid;
 
     @NotNull(message = "Ask is mandatory")
-
     private Double ask;
 
     private String benchmark;

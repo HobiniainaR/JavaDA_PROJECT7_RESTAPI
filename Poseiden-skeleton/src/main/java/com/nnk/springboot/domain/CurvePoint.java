@@ -7,7 +7,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Digits;
 import lombok.Getter;
 import lombok.Setter;
 import java.sql.Timestamp;
@@ -29,10 +28,12 @@ public class CurvePoint {
     @Column(name = "as_of_date")
     private Timestamp asOfDate;
 
-    @NotNull
+    @NotNull(message = "term is mandatory")
+    @Column(name = "term")
     private Double term;
 
-    @NotNull
+    @NotNull(message = "value is mandatory")
+    @Column(name = "curve_value")
     private Double value;
 
     @Column(name = "creation_date")

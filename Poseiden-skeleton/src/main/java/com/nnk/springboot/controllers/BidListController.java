@@ -40,6 +40,7 @@ public class BidListController {
         return "redirect:/bidList/list";
     }
 
+
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         BidList bidList = bidListService.findById(id);
@@ -51,13 +52,13 @@ public class BidListController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateBid(@PathVariable("id") Integer id, BidList bidList, BindingResult result, Model model) {
+    public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "bidList/update";
         }
         bidList.setBidListId(id);
         bidListService.save(bidList);
-            return "redirect:/bidList/list";
+        return "redirect:/bidList/list";
     }
 
     @GetMapping("/delete/{id}")
