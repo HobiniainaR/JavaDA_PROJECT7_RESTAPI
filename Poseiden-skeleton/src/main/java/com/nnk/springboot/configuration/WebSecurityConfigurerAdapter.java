@@ -76,6 +76,7 @@ public class WebSecurityConfigurerAdapter {
                         .requestMatchers("/rating/**").hasAnyAuthority("USER", "ADMIN")
                         .requestMatchers("/ruleName/**").hasAnyAuthority("USER", "ADMIN")
                         .requestMatchers("/trade/**").hasAnyAuthority("USER", "ADMIN")
+                        .requestMatchers("/app-logout/**").permitAll()
                         .anyRequest().authenticated()
         );
         http.formLogin(form -> {
@@ -87,7 +88,7 @@ public class WebSecurityConfigurerAdapter {
         /* http.oauth2Login(Customizer.withDefaults()); */
         http.logout(
                 logout -> logout
-                        .logoutUrl("/logout")
+                        .logoutUrl("/app-logout")
                         .deleteCookies("JSESSIONID")
                         .clearAuthentication(true)
                         .logoutSuccessUrl("/login.html")

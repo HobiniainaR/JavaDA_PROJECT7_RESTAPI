@@ -21,50 +21,71 @@ public class BidList {
     private Integer bidListId;
 
     @NotBlank(message = "Account is mandatory")
+    @Column(name = "account")
     private String account;
 
     @NotBlank(message = "Type is mandatory")
+    @Column(name = "type")
     private String type;
 
     @NotNull(message = "Bid Quantity is mandatory")
+    @Column(name = "bid_quantity")
     private Double bidQuantity;
 
     @NotNull(message = "Ask Quantity is mandatory")
+    @Column(name = "ask_quantity")
     private Double askQuantity;
 
     @NotNull(message = "Bid is mandatory")
+    @Column(name = "bid")
     private Double bid;
 
     @NotNull(message = "Ask is mandatory")
+    @Column(name = "ask")
     private Double ask;
 
+    @Column(name = "benchmark")
     private String benchmark;
 
+    @Column(name = "bid_list_date")
     private Timestamp bidListDate;
 
+    @Column(name = "commentary")
     private String commentary;
 
+    @Column(name = "security")
     private String security;
 
+    @Column(name = "status")
     private String status;
 
+    @Column(name = "trader")
     private String trader;
 
+    @Column(name = "book")
     private String book;
 
+    @Column(name = "creation_name")
     private String creationName;
 
+    @Column(name = "creation_date")
     private Timestamp creationDate;
 
+    @Column(name = "revision_name")
     private String revisionName;
 
+    @Column(name = "revision_date")
     private Timestamp revisionDate;
 
+    @Column(name = "deal_name")
     private String dealName;
 
+    @Column(name = "deal_type")
     private String dealType;
 
+    @Column(name = "source_list_id")
     private String sourceListId;
 
+    @Column(name = "side")
     private String side;
 }

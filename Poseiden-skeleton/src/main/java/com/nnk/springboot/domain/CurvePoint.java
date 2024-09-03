@@ -22,10 +22,10 @@ public class CurvePoint {
     private Integer id;
 
     @NotNull
-    @Column(name = "curve_id")
+    @Column(name = "curveId")
     private Integer curveId;
 
-    @Column(name = "as_of_date")
+    @Column(name = "asOfDate")
     private Timestamp asOfDate;
 
     @NotNull(message = "term is mandatory")
@@ -33,9 +33,9 @@ public class CurvePoint {
     private Double term;
 
     @NotNull(message = "value is mandatory")
-    @Column(name = "curve_value")
+    @Column(name = "value")
     private Double value;
 
-    @Column(name = "creation_date")
+    @Column(name = "creationDate")
     private Timestamp creationDate;
 }

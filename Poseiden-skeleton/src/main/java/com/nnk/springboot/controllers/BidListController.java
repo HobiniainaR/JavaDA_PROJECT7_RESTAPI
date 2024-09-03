@@ -13,25 +13,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/bidList")
 public class BidListController {
 
     @Autowired
     private BidListService bidListService;
 
-    @GetMapping("/list")
+    @RequestMapping("/bidList/list")
     public String home(Model model) {
         model.addAttribute("bidLists", bidListService.findAll());
         return "bidList/list";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/bidList/add")
     public String addBidForm(Model model) {
         model.addAttribute("bidList", new BidList());
         return "bidList/add";
     }
 
-    @PostMapping("/validate")
+    @PostMapping("/bidList/validate")
     public String validate(@Valid BidList bidList, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "bidList/add";
@@ -41,7 +40,7 @@ public class BidListController {
     }
 
 
-    @GetMapping("/update/{id}")
+    @GetMapping("bidList/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         BidList bidList = bidListService.findById(id);
         if (bidList == null) {
@@ -51,7 +50,7 @@ public class BidListController {
         return "bidList/update";
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping("/bidList/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "bidList/update";
@@ -61,7 +60,7 @@ public class BidListController {
         return "redirect:/bidList/list";
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/bidList/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id) {
         bidListService.deleteById(id);
         return "redirect:/bidList/list";
