@@ -28,19 +28,16 @@ public class BidList {
     @Column(name = "type")
     private String type;
 
-    @NotNull(message = "Bid Quantity is mandatory")
+    @NotNull
     @Column(name = "bid_quantity")
     private Double bidQuantity;
 
-    @NotNull(message = "Ask Quantity is mandatory")
     @Column(name = "ask_quantity")
     private Double askQuantity;
 
-    @NotNull(message = "Bid is mandatory")
     @Column(name = "bid")
     private Double bid;
 
-    @NotNull(message = "Ask is mandatory")
     @Column(name = "ask")
     private Double ask;
 

@@ -18,7 +18,7 @@ public class BidListService {
         return bidListRepository.findAll();
     }
     public BidList save(BidList bidList) {
-        return bidListRepository.save(bidList);
+            return bidListRepository.save(bidList);
     }
     public BidList findById(Integer id) {
         return bidListRepository.findById(id).orElse(null);
