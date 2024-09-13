@@ -59,6 +59,7 @@ public class WebSecurityConfigurerAdapter {
      * @return a {@link SecurityFilterChain} object representing the configured security filter chain.
      * @throws Exception if an error occurs while configuring HTTP security.
      */
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable);
@@ -80,9 +81,8 @@ public class WebSecurityConfigurerAdapter {
                         .anyRequest().authenticated()
         );
         http.formLogin(form -> {
-                    form
-                            .defaultSuccessUrl("/bidList/list", true)
-                            .isCustomLoginPage();
+            form.defaultSuccessUrl("/bidList/list", true);
+                    form.isCustomLoginPage();
                 }
         );
         /* http.oauth2Login(Customizer.withDefaults()); */
